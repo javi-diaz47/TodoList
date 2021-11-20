@@ -1,0 +1,22 @@
+.search-todo{
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    justify-content: space-between;
+    padding: 0 2rem;
+    gap: 1rem;
+}
+
+.search-bar{
+    height: 2.6rem;
+    border-radius: 3rem;
+    border: 2px solid var(--black);
+    padding: 0 1rem;
+    font-size: 1rem;
+    font-family: 'open sans', sans-serif;
+    outline: transparent;
+}
+
+.search-todo button{
+    justify-self: end;
+    margin: 0 1rem 0 0;
+}

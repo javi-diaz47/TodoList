@@ -1,0 +1,77 @@
+
+.todo-item{
+    width: 100%;
+    height: 12.5rem;
+    border-radius: 1.2rem;
+    box-shadow: -4px -4px 10px rgba(0, 0, 0, 0.1), 4px 4px 10px rgba(247, 159, 119, 0.1);
+    font-family: 'poppins', sans-serif;
+    display: grid;
+    grid-template-areas: "title title edit"
+                   "text text text"
+                   "text text text"
+                   "btn btn btn-circle";
+
+    /* padding: 1rem; */
+}
+
+.todo-item h2{
+    grid-area: title;
+    align-self: center;
+    font-size: 2rem;
+    margin: 0 1rem 0 1rem;
+}
+
+.btn-edit{
+    grid-area: edit;
+    justify-self: end;
+    margin: 0 1rem 1rem 0;
+}
+
+.todo-item p{
+    grid-area: text;
+    padding: 0 1rem;
+    margin: 0;
+    font-family: 'open sans', sans-serif ;
+    font-size: 1.2rem;
+    line-height: 24px;
+    text-align: justify;
+}
+
+.btn-completed{
+    grid-area: btn;
+    justify-self: start;
+    align-self: end;
+    margin: 0 0 1rem 1rem;
+}
+
+.todo-item .btn-circle{
+    grid-area: btn-circle;
+    justify-self: end;
+    align-self: end;
+    margin: 0 1rem 1rem 0;
+
+}
+
+.todo-item[completed="true"]{
+    background: linear-gradient(180deg, var(--white) 0%, var(--blue) 347.58%);
+}
+
+.todo-item[completed="false"]{
+    background: linear-gradient(180deg, var(--white) 0%, var(--orange) 347.58%);
+}
+
+.todo-item[completed="true"] .btn-completed{
+    background: var(--blue);
+}
+
+.todo-item[completed="false"] .btn-completed{
+    background: var(--orange);
+}
+.completed-false{
+  background-color: var(--orange);
+}
+
+.btn-edit{
+    background-color: transparent;
+    border: 0;
+}

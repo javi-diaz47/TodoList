@@ -1,0 +1,48 @@
+:root{
+  --blue: #80BEF4;
+  --orange: #F79F77;
+  --yellow: #F6D58A;
+  --black: #010101;
+  --white: #FFFFFF;
+}
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Poppins', sans-serif; */
+}
+
+#root{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  scroll-behavior: smooth;
+}
+
+div{
+  margin-bottom: 4rem;
+}
+
+button{
+  cursor: pointer;
+}
+
+.btn-circle{
+  width: 2.6rem;
+  height: 2.6rem;
+  background-color: var(--black);
+  border-radius: 50%;
+  color: var(--white);
+}
+
+.btn-completed{
+  height: 2.6rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 3rem;
+  border: 0;
+}
