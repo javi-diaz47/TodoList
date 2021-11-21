@@ -1,16 +1,24 @@
 import React from 'react';
-import '../style/Components/TodoSearch.css';
+import './TodoSearch.css';
 
-function TodoSearch(){
+function TodoSearch(props){
+    
+    const {searchValue, setSearchValue} = props;
+    //Using array destructuring to the useState Hook
+    //to get a state and a setState function which change the state
 
     const onSerchValueChange = (ev) => {
-        console.log(ev.target.value);
+        setSearchValue(ev.target.value);
+        //Changing the state
     }
 
     return (
         <section className="search-todo">
             <input 
-                className="search-bar" placeholder="Buscar ToDo"
+                className="search-bar" 
+                placeholder="Buscar ToDo"
+                // connecting the state with the element which may change the state
+                value={searchValue}
                 onChange={onSerchValueChange}     
             ></input> 
             <button className="btn-circle" id="search-btn">
@@ -19,7 +27,7 @@ function TodoSearch(){
                 </svg>
             </button>
         </section>
-    );
+   );
 
 }
 

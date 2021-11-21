@@ -1,9 +1,12 @@
 import React from "react";
-import '../style/Components/CreateTodoButton.css';
+import './CreateTodoButton.css';
 
-function CreateTodoButton(){
+function CreateTodoButton({todos, setTodos}){
 
     const onClickBtn = () => {
+        const newTodos = [...todos];
+        newTodos.push({title: 'title', text: 'Do the laundry', completed: true})
+        setTodos(newTodos);
         alert('Se agrego un nuevo todo');
     }
 

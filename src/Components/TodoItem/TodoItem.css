@@ -42,7 +42,10 @@
     justify-self: start;
     align-self: end;
     margin: 0 0 1rem 1rem;
+
+    transition: .2s;
 }
+
 
 .todo-item .btn-circle{
     grid-area: btn-circle;
@@ -67,6 +70,19 @@
 .todo-item[completed="false"] .btn-completed{
     background: var(--orange);
 }
+
+/* .todo-item[completed="true"] .btn-edit svg rect{
+    fill: var(--blue);
+}
+
+
+
+.todo-item[completed="false"] .btn-edit svg rect{
+    fill: var(--orange);
+} */
+
+
+
 .completed-false{
   background-color: var(--orange);
 }
