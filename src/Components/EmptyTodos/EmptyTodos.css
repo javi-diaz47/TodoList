@@ -1,0 +1,18 @@
+.empty-todos{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* .empty-todos img{
+} */
+
+.empty-todos h3{
+    text-align: center;
+    font-family: 'poppins', sans-serif;
+    font-weight: normal;
+}

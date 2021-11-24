@@ -2,9 +2,12 @@
     position: fixed;
     width: 4rem;
     height: 4rem;
-    bottom: 2em;
+    bottom: 0;
+    bottom: 2rem;
     right: 2rem;
     border: 0;
     border-radius: 50%;
     background-color: var(--yellow);
+    transition: .3s;
+    margin: 0;
 }

@@ -16,10 +16,12 @@
     outline: transparent;
 }
 
-.search-todo button{
-    justify-self: end;
+.search-todo span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
     padding: 0;
     width: 3rem;
     height: 3rem;
-    margin: 0 1rem 0 0;
 }

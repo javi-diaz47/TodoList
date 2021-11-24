@@ -1,0 +1,102 @@
+.loading{
+  position: absolute;
+  left: calc(50% - 25px);
+  top: calc(50% - 25px);
+  width: 50px;
+  height: 50px;
+  border: 4px solid transparent;
+  border-radius: 50%;
+  animation: rotate 1.2s linear 0s infinite;
+}
+
+
+@keyframes rotate {
+  from {
+    border-left-color: var(--blue);
+    border-right-color: var(--orange);
+  }
+  
+  50% {
+    border-left-color: var(--orange);
+    border-right-color: var(--yellow);
+  }
+
+  100% {
+    transform: rotate(360deg);
+    border-left-color: var(--blue);
+    border-right-color: var(--orange);
+ 
+  }
+  
+}
+
+.todo-skeleton{
+  margin: 0;
+  border-radius: 1.2rem;
+  padding: 1rem;
+  background: linear-gradient(90deg, rgb(250,250,250), rgb(200,199,199) );
+  background-size: 400% 400%;
+  animation: loadingAnimation 3s ease-in-out infinite;
+}
+
+.todo-skeleton-title{
+  width: 40%;
+  height: 1rem;
+  border-radius: .4rem;
+  padding: .4rem;
+  background: #ccc;
+  margin-bottom: 2rem;
+  animation: loading 2s linear infinite alternate;
+}
+
+.todo-skeleton-text{
+  height: 1rem;
+  border-radius: .4rem;
+  padding: .4rem;
+  margin-bottom: 4rem;
+  background: #ccc;
+  box-shadow: 0 2.5rem 0 0 #ccc;
+  animation: loading 2s linear infinite alternate;
+}
+
+.todo-skeleton-btns{
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  margin: 0;
+}
+
+.todo-skeleton-completed-btn{
+  display: block;
+  width: 8rem;
+  height: 2.6rem;
+  border-radius: 3rem;
+  background: #ccc;
+  animation: loading 2s linear infinite alternate;
+}
+
+.todo-skeleton-delete-btn{
+  display: block;
+  justify-self: end;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background: #ccc;
+  animation: loading 2s linear infinite alternate;
+
+}
+
+
+
+@keyframes loading {
+  
+  from{
+    filter: opacity(.2);
+  }
+
+  to{
+    filter: opacity(.8);
+  }
+
+}
+
