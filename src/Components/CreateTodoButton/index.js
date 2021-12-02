@@ -1,14 +1,10 @@
 import React from "react";
 import { useContext } from "react";
-import { TodoContext } from "../../TodoContext";
+import { TodoContext } from "../../Hooks/useTodos";
 import { TodoIcon } from "../TodoIcon";
 import './CreateTodoButton.css';
 
-function CreateTodoButton(){
-
-    const {
-        setCreating
-        } = useContext(TodoContext);
+function CreateTodoButton({setCreating}){
 
     const onClickBtn = () => {
         setCreating(true);

@@ -1,17 +1,9 @@
-import React, { useContext } from 'react';
-import { TodoContext } from '../../TodoContext';
+import React from 'react';
 import { TodoForm } from '../TodoForm';
 import './CreateTodoModal.css';
 
-function EditTodoModal(){
+function EditTodoModal({editing, setEditing, todos, saveTodos, currentTodo}){
 
-    const {
-        editing,
-        setEditing,
-        todos,
-        saveTodos,
-        currentTodo
-    } = useContext(TodoContext);
 
     const onCloseModal = () => {
        setEditing(false);

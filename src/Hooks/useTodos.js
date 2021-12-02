@@ -1,12 +1,9 @@
 import React from 'react';
-import { createContext } from 'react';
 import { useState } from 'react';
-import { useLocaleStorage } from '../Hooks/useLocaleStorage';
-
-const TodoContext = createContext();
+import { useLocaleStorage } from './useLocaleStorage';
 
 
-function TodoProvider(props){
+function useTodos(){
 
     const {
         item: todos,
@@ -58,36 +55,32 @@ function TodoProvider(props){
         setEditing(true);
     }
 
-    return (
-        <TodoContext.Provider
-            value={{
-                todos,
-                saveTodos,
-                error,
-                loading,
-                
-                creating,
-                setCreating,
-                addTodo,
+    return {
+        todos,
+        saveTodos,
+        error,
+        loading,
+        
+        creating,
+        setCreating,
+        addTodo,
 
-                editing,
-                setEditing,
-                currentTodo,
-                
-                searchValue,
-                setSearchValue,
+        editing,
+        setEditing,
+        currentTodo,
+        
+        searchValue,
+        setSearchValue,
 
-                totalTodos,
-                completedTodos,
-                searchedTodos,
+        totalTodos,
+        completedTodos,
+        searchedTodos,
 
-                onRemove,
-                onEditModal,
-                onComplete,
-        }}>
-            {props.children}
-        </TodoContext.Provider>
-    );
+        onRemove,
+        onEditModal,
+        onComplete,
+    }
+
 }
 
-export { TodoContext, TodoProvider };
+export { useTodos };

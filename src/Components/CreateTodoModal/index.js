@@ -1,15 +1,8 @@
-import React, { useContext } from 'react';
-import { TodoContext } from '../../TodoContext';
+import React from 'react';
 import { TodoForm } from '../TodoForm';
 import './CreateTodoModal.css';
 
-function CreateTodoModal(){
-
-    const {
-        creating,
-        setCreating,
-        addTodo
-    } = useContext(TodoContext);
+function CreateTodoModal({creating, setCreating, addTodo}){
 
     const onCloseModal = () => {
        setCreating(false);

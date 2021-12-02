@@ -1,13 +1,8 @@
-import React, { useContext } from 'react';
-import { TodoContext } from '../../TodoContext';
+import React from 'react';
 import './TodoSearch.css';
 
-function TodoSearch(){
+function TodoSearch({searchValue, setSearchValue}){
     
-    const {
-        searchValue,
-        setSearchValue
-    } = useContext(TodoContext);
 
     //Using array destructuring to the useState Hook
     //to get a state and a setState function which change the state
