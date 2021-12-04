@@ -14,6 +14,29 @@ import { TodoItem } from '../TodoItem';
 import { CreateTodoButton } from '../CreateTodoButton';
 import { useTodos } from '../../Hooks/useTodos';
 
+const TodoLoading = () => (
+     <ul>
+        {
+            new Array(4).fill().map((v, i) => (
+                <LoadingTodo key={i}/>
+            )) 
+        }
+     </ul>
+)
+
+const TodoError = () => (
+    <p>
+        Hubo un error :( <br/>
+        recarga la pagina por favor
+    </p>
+)
+
+
+const EmptySearchTodos = ({searchText}) => (
+    <p>
+        No existe el todo {searchText}
+    </p>
+)
 
 
 function App() {
@@ -56,34 +79,44 @@ function App() {
 
         </TodoHeader>
 
-        <TodoList>
-
-            {error && <p>Hubo un error :( <br/> recarga la pagina por favor</p>}
-
+        <TodoList
+            error={error}
+            loading={loading}
+            todos={todos}
+            searchedTodos={searchedTodos}
+            searchText={searchValue}
+            onError={<TodoError/>}
+            onLoading={<TodoLoading/>}
+            onEmpty={<EmptyTodos/>}
+            onEmptySearchTodos={(searchText) => <EmptySearchTodos searchText={searchText} />}
+            // render={todo => (
+            //     <TodoItem 
+            //         key={todo.text}
+            //         title={todo.title}
+            //         text={todo.text}
+            //         completed={todo.completed}
+            //         onComplete={onComplete}
+            //         onRemove={onRemove}
+            //         onEditModal={onEditModal}
+            //     />
+            // )}
+        >
             {
-              loading && 
-                new Array(4).fill().map((v, i) => (
-                    <LoadingTodo key={i}/>
-                ))
+                todo => (
+                    <TodoItem 
+                        key={todo.text}
+                        title={todo.title}
+                        text={todo.text}
+                        completed={todo.completed}
+                        onComplete={onComplete}
+                        onRemove={onRemove}
+                        onEditModal={onEditModal}
+                    />
+                )
             }
-
-            {(!loading && todos.length === 0)  && <EmptyTodos/>}
-
-            {searchedTodos.map(todo => 
-                <TodoItem 
-                    key={todo.text}
-                    title={todo.title}
-                    text={todo.text}
-                    completed={todo.completed}
-                    onComplete={onComplete}
-                    onRemove={onRemove}
-                    onEditModal={onEditModal}
-                />
-            )}
 
         </TodoList>
 
-    
         <CreateTodoButton 
             setCreating={setCreating}
         />

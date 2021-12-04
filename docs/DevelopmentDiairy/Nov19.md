@@ -146,6 +146,9 @@ Components/App/AppUI.js
     import {MyContext} from '../Context';
 
     function AppUI(){
+
+        const {people} = useContext(MyContext);
+
         return(
 
             <header>some stuffs</header>
