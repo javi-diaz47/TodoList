@@ -13,7 +13,7 @@ import { EmptyTodos } from '../EmptyTodos';
 import { TodoItem } from '../TodoItem';
 import { CreateTodoButton } from '../CreateTodoButton';
 import { useTodos } from '../../Hooks/useTodos';
-import { StorageChangeAlertWithListener } from '../StorageChangeAlert';
+import { StorageChangeAlert } from '../StorageChangeAlert';
 
 const TodoLoading = () => (
      <ul>
@@ -148,7 +148,7 @@ function App() {
         />
 
 
-        <StorageChangeAlertWithListener synchronise={synchroniseTodos}/>
+        <StorageChangeAlert synchronise={synchroniseTodos}/>
         
     </React.Fragment>
     

@@ -1,12 +1,13 @@
 import React from 'react';
-import { withStorageListener } from './withStorageListener';
+import { useStorageListener} from './useStorageListener';
 import './index.css';
 
-function StorageChangeAlert({show, toggleShow}){
+function StorageChangeAlert({synchronise}){
+
+    const {show, toggleShow} = useStorageListener(synchronise);
 
     const onSynchronise = () => {
         toggleShow();
-        // synchronise(true);
     }
 
     if(show){
@@ -23,7 +24,4 @@ function StorageChangeAlert({show, toggleShow}){
     }
 
 }
-
-const StorageChangeAlertWithListener = withStorageListener(StorageChangeAlert);
-
-export { StorageChangeAlertWithListener };
+export { StorageChangeAlert };
