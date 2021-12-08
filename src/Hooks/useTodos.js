@@ -9,7 +9,8 @@ function useTodos(){
         item: todos,
         saveItem: saveTodos,
         error,
-        loading
+        loading,
+        synchroniseItem: synchroniseTodos
     } = useLocaleStorage('TODOS_V1', []);
     
     const [searchValue, setSearchValue] = useState('');
@@ -60,6 +61,7 @@ function useTodos(){
         saveTodos,
         error,
         loading,
+        synchroniseTodos,
         
         creating,
         setCreating,

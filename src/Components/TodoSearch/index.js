@@ -1,7 +1,7 @@
 import React from 'react';
 import './TodoSearch.css';
 
-function TodoSearch({searchValue, setSearchValue}){
+function TodoSearch({searchValue, setSearchValue, loading}){
     
 
     //Using array destructuring to the useState Hook
@@ -13,13 +13,15 @@ function TodoSearch({searchValue, setSearchValue}){
     }
 
     return (
-        <section className="search-todo">
+        <section className="search-todo"
+                style={loading? {'opacity': 0.2}: {}}     
+        >
             <input 
                 className="search-bar" 
                 placeholder="Buscar ToDo"
                 // connecting the state with the element which may change the state
                 value={searchValue}
-                onChange={onSerchValueChange}     
+                onChange={onSerchValueChange}
             ></input> 
             <span className="btn-circle" id="search-icon">
                 <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">

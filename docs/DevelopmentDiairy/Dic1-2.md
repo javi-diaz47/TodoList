@@ -244,5 +244,186 @@ function WaveList(props){
 So we don't need to use the `React Context` anymore (at least for now)
 
 
+#### React.Children && React.cloneElement
+
+In some ocassions we have components that shares a same state, this elements could be integrated into a unique parent and insead of passing the state as a prop to each child, we could pass it to the father and delegate this task to him.
+
+```jsx
+
+    <TodoCounter
+        loading={loading} 
+        completedTodos={completedTodos}
+        totalTodos={totalTodos}
+    >
+
+    <TodoSearch
+        loading={loading}
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+    >
+
+```
+Instead of this we could have
+```jsx
+    <Header loading={loading}>
+
+        <TodoCounter
+            completedTodos={completedTodos}
+            totalTodos={totalTodos}
+        >
+
+    </Header>
+
+```
+
+```jsx
+
+function Header({children, loading}){
+
+    return(
+        {
+            React.cloneElement(children, {loading})
+ 
+        }
+   );
+
+}
+
+```
+Now the property loading is assigned to the father which set this same property to its child through the `React.cloneElement()` function. This function received as parameter a component (which is in this case the children) and the properties we want to assign to the component (in this case the prop loading).
+This solution works when we have a child but for children (when we have more than one component) we need to try a different approach since the `React.cloneElement()` online works with a single component.
+To archieve this we could use the `React.Children` property which let us use different function to the children that a father components has; one of this functions is `toArray()` so we don't have to worry anymore if the property children is an array, a component or null it always be an array so we can apply to it arrays methods.
+
+```jsx
+    <Header loading={loading}>
+
+        <TodoCounter
+            completedTodos={completedTodos}
+            totalTodos={totalTodos}
+        >
+
+        <TodoSearch
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+        >
+
+    </Header>
+
+```
+
+```jsx
+
+function Header({children, loading}){
+
+    return(
+        {
+            React.Children.toArray(children).map(child => (
+                React.cloneElement(child, {loading})
+            ))
+        }
+    );
+
+}
+
+```
+
+## High Order Components
+Before start talking about the high order components or `HOC` we need to know what a high order function is, this kind of methods are just functions that return another function.
+
+```js
+function highOrderFunc(n1){
+
+    return  function returnFunction(n2){
+
+        return n1+n2;
+
+    }
+
+}
+
+// const withSum1 = highOrderFunc(2);
+// const sum = withSum1(3);
+
+// or
+
+const sum = highOrderFunc(2)(3);
+
+// sum = 3
+```
+To the `HOC` the concept is the same, a function that return another function until at the end return a component
+
+```jsx
+function highOrderComponent(WrapperComponent){
+
+    return function Component(props){
+
+        return (
+            <>
+
+                <WrapperComponent {...props}>
+
+            </>
+
+        );
+
+    }
+
+}
+
+function Component(props){
+    return (
+        <h2>
+            Hola, {props.name}
+        </h2>
+    );
+}
+
+
+const withHOC = highOrderComponent(Component);
+
+```
+
+The `HOC` by convention are declare with the word `with` follow by the type of injection will do
+
+```jsx
+
+function App({wave, name}){
+    return (
+        <h2>{wave}, {name}</h2>
+    );
+}
+
+function withWave(wrapperComponent){
+    
+    return function WrapperComponentWithWave(wave){
+
+        return function Component(props){
+
+            return (
+
+                <WrapperComponent wave={wave} name='Elizabeth'>
+
+            );
+
+        }
+
+    }
+
+}
+
+const AppWithWave = withWave(App)('Morning');
+
+ReactDOM.render(
+    <AppWithWave />,
+    document.getElementById('root')
+);
+
+```
+The `HOC` function could also use to insert some data from a api to our components.
+
+
+
+
+
 
 

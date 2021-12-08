@@ -6,6 +6,7 @@ import {useEffect} from 'react';
 
 function useLocaleStorage(itemName, initValue){
 
+  const [synchronisedItem, setSynchronisedItem] = useState(true);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
   const [item, setItem] = useState(initValue);
@@ -26,7 +27,7 @@ function useLocaleStorage(itemName, initValue){
         
         setItem(parsedItem);
         setLoading(false);
-
+        setSynchronisedItem(true);
       }, 1000);
 
 
@@ -34,11 +35,16 @@ function useLocaleStorage(itemName, initValue){
       setError(true);
     }
 
-  }, []);
+  }, [synchronisedItem]);
 
   const saveItem = (newItem) => {
     localStorage.setItem(itemName, JSON.stringify(newItem));
     setItem(newItem);
+  }
+
+  const synchroniseItem = () => {
+    setLoading(true);
+    setSynchronisedItem(false);
   }
 
   return {
@@ -46,6 +52,7 @@ function useLocaleStorage(itemName, initValue){
     saveItem,
     error,
     loading,
+    synchroniseItem, 
   };
 
 }

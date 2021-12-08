@@ -13,6 +13,7 @@ import { EmptyTodos } from '../EmptyTodos';
 import { TodoItem } from '../TodoItem';
 import { CreateTodoButton } from '../CreateTodoButton';
 import { useTodos } from '../../Hooks/useTodos';
+import { StorageChangeAlertWithListener } from '../StorageChangeAlert';
 
 const TodoLoading = () => (
      <ul>
@@ -45,6 +46,7 @@ function App() {
         loading,
         todos,
         searchedTodos, 
+        synchroniseTodos,
         onComplete, 
         onRemove,
         onEditModal,
@@ -61,18 +63,21 @@ function App() {
         currentTodo
     } = useTodos();
 
+
   return (
     
     <React.Fragment>
 
-        <TodoHeader>
+        <TodoHeader loading={loading}>
 
             <TodoCounter 
+                // loading={loading}
                 totalTodos={totalTodos}
                 completedTodos={completedTodos}
             />
             
             <TodoSearch 
+                // loading={loading}
                 searchValue={searchValue}
                 setSearchValue={setSearchValue}
             />
@@ -129,7 +134,8 @@ function App() {
                 creating={creating}
                 setCreating={setCreating}
                 addTodo={addTodo}
-            /> 
+            />
+
 
         </Modal>
             
@@ -140,6 +146,9 @@ function App() {
             saveTodos={saveTodos}
             currentTodo={currentTodo}
         />
+
+
+        <StorageChangeAlertWithListener synchronise={synchroniseTodos}/>
         
     </React.Fragment>
     
